@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
 <style>
   :root {
     --bg: #faf8f3;
@@ -262,38 +262,47 @@
 </div>
 
 <script>
-  const renderer = new marked.Renderer();
-
-  renderer.heading = function(text, level) {
-    const slug = text.toLowerCase()
+  // Simple slug helper
+  function slugify(text) {
+    return text.toLowerCase()
       .replace(/[^\w\s-]/g, '')
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-')
       .trim();
-    const id = 'section-' + slug;
-    return `<h${level} id="${id}">${text}</h${level}>`;
-  };
-
-  marked.setOptions({ renderer, breaks: false, gfm: true });
+  }
 
   async function loadSpec() {
+    const target = document.getElementById('rendered');
     try {
-      const res = await fetch('sunspoke-master-spec.md');
-      if (!res.ok) throw new Error('Could not load spec');
+      const res = await fetch('sunspoke-master-spec.md?t=' + Date.now());
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       const md = await res.text();
       const html = marked.parse(md);
-      document.getElementById('rendered').classList.remove('loading');
-      document.getElementById('rendered').innerHTML = html;
+      target.classList.remove('loading');
+      target.innerHTML = html;
+
+      // Add IDs to h2s after render (for TOC anchoring)
+      document.querySelectorAll('.content h2').forEach(h2 => {
+        if (!h2.id) h2.id = 'section-' + slugify(h2.textContent);
+      });
+      document.querySelectorAll('.content h3').forEach(h3 => {
+        if (!h3.id) h3.id = 'section-' + slugify(h3.textContent);
+      });
+
       buildTOC();
       setupScrollSpy();
     } catch (e) {
-      document.getElementById('rendered').innerHTML =
-        '<p style="color: #7a7268; font-style: italic;">Could not load spec. Check that sunspoke-master-spec.md is in the same directory.</p>';
+      target.classList.remove('loading');
+      target.innerHTML =
+        '<div style="padding: 40px 0; color: #7a7268; font-family: Fraunces, serif; font-style: italic;">' +
+        '<p>Could not load spec: ' + e.message + '</p>' +
+        '<p>Try the <a href="https://github.com/jasmine-esk/sunspoke-spec/blob/main/sunspoke-master-spec.md" style="color: #a67c3f;">raw file on GitHub</a> instead.</p></div>';
     }
   }
 
   function buildTOC() {
     const toc = document.getElementById('toc');
+    toc.innerHTML = '';
     const h2s = document.querySelectorAll('.content h2');
     h2s.forEach(h2 => {
       // Skip comments section from TOC
@@ -308,7 +317,7 @@
       const a = document.createElement('a');
       a.href = '#' + h2.id;
       a.dataset.target = h2.id;
-      a.innerHTML = `<span class="toc-number">${number}</span>${label}`;
+      a.innerHTML = '<span class="toc-number">' + number + '</span>' + label;
       li.appendChild(a);
       toc.appendChild(li);
     });
@@ -317,17 +326,17 @@
   function setupScrollSpy() {
     const sections = document.querySelectorAll('.content h2');
     const links = document.querySelectorAll('#toc a');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           const id = entry.target.id;
-          links.forEach(link => {
+          links.forEach(function(link) {
             link.classList.toggle('active', link.dataset.target === id);
           });
         }
       });
     }, { rootMargin: '-20% 0px -70% 0px' });
-    sections.forEach(section => observer.observe(section));
+    sections.forEach(function(section) { observer.observe(section); });
   }
 
   loadSpec();
