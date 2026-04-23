@@ -413,15 +413,21 @@ Stored in a secondary compartment in the presentation box. Let each founder choo
 
 ## 8. Tech Specification — Michael's Build
 
+### Executive framing
+
+Michael owns the entire software stack for v0. Phase 1 ships a fully functional product for **one user (Jasmine)** on a single reworked Plaud NotePin — this is the proof-of-concept that validates whether the coaching is actually good before any mass hardware purchase. Phase 3 scales the pipeline from 1 user to 20 founders.
+
+The guiding principle: **build the coaching experience on borrowed hardware. Custom hardware comes in Phase 4 (Chinese firm, 2027).** Don't over-engineer for hardware we don't have yet.
+
 ### v0 Stack Overview
 
 ```
 [Rebranded Plaud NotePin]
     ↓ records audio (everything, unfiltered)
-[Plaud's cloud]
-    ↓ transcribes all speech
+[Plaud's cloud OR direct BLE — see §8.3]
+    ↓ transcripts or raw audio
 [Michael's Backend Service]
-    ├── Pulls transcripts via Plaud API or export pipeline
+    ├── Transcript ingestion (path TBD — Week 1 investigation)
     ├── Speaker diarization (Pyannote or similar) — identifies wearer
     ├── Filters to wearer-only speech segments
     ├── Pattern analysis and context accumulation
@@ -429,83 +435,254 @@ Stored in a secondary compartment in the presentation box. Let each founder choo
     ├── Generates daily recap, weekly Read, monthly retrospective
     ↓
 [Slack Bot — Sunspoke]
-    ├── Delivers daily messages (evening, user-chosen time)
+    ├── Delivers daily DMs (evening, user-chosen time)
     ├── Delivers weekly Read with archetype card
-    ├── Handles conversation (onboarding, pause commands, feedback)
+    ├── Handles onboarding conversation, pause commands, feedback
 ```
 
-### Technology choices
+### 8.1 Technology choices
 
-- **Language / runtime:** Python (best ML ecosystem) or Node.js (faster for Slack bot)
-- **LLM:** Claude API (Opus for weekly Reads, Sonnet for daily recaps to manage cost)
-- **Speaker diarization:** Pyannote-audio (open source) or commercial (Pindrop, Rev)
-- **Audio transcription:** Rely on Plaud's transcription for v0; evaluate self-hosted Whisper in v0.5
-- **Database:** Postgres for user data, pattern history, readouts
-- **Hosting:** Fly.io, Railway, or AWS Lambda — keep it cheap, not scale-optimized
-- **Slack integration:** Bolt-js or Bolt-python framework
-- **Secrets management:** 1Password SDK or Doppler
-- **Monitoring:** Simple (Sentry + Plausible). Don't over-invest in observability at 20 users.
+- **Language / runtime:** Python preferred (best ML/audio ecosystem for diarization). Node.js acceptable if Michael strongly prefers.
+- **LLM:** Claude API — Opus for weekly Reads (higher-quality reasoning), Sonnet for daily recaps (cost management)
+- **Speaker diarization:** Pyannote-audio (open source, free, works well). Commercial options (Pindrop, Rev) if accuracy is insufficient.
+- **Audio transcription:** Rely on Plaud's transcription for v0 if accessible; fall back to self-hosted Whisper (Whisper Large V3) if we need to do our own
+- **Database:** Postgres for user data, transcripts, pattern history, readouts
+- **Hosting:** Fly.io or Railway (cheap, fast deploy). AWS Lambda + RDS acceptable alternative. Not scale-optimized — we have 20 users max.
+- **Slack integration:** Bolt-python or Bolt-js framework
+- **Secrets management:** 1Password SDK or Doppler. No secrets in code, no secrets in git.
+- **Monitoring:** Sentry for errors. Plausible for lightweight analytics. Don't over-invest in observability at this scale.
+- **Repo:** Private GitHub repo under Sunspell org (or new Sunspoke org — Jasmine to decide)
 
-### Week-by-week build plan (6 weeks)
+### 8.2 Four-phase execution
 
-**Week 1 — Plaud investigation + foundation**
-- Verify Plaud API availability: public, enterprise, or export-only
-- Set up Plaud Pro/Enterprise account for access
-- Document audio + transcript data flow
-- Initialize project repo, secrets, deployment target
-- **Deliverable:** one-pager answering "what can we pull from Plaud and how"
+The build mirrors the product phases outlined in §13. Michael's work spans all four, with different intensity in each.
+
+---
+
+#### Phase 1 — Proof of Concept (Weeks 1-4) · *just Jasmine*
+
+**Goal:** Ship the full coaching stack for one user (Jasmine) on one reworked pendant. Validate that the coaching is actually good before any mass hardware purchase.
+
+**Week 1 — Investigation**
+- Buy Plaud NotePin, use it like a normal user for 2-3 days
+- Complete data-pipeline investigation (see §8.3 fallback ladder below)
+- Initialize project repo, set up secrets, pick hosting target
+- **Deliverable:** one-pager answering *"What path are we using to pull transcripts from Plaud, and what's the Week 2 timeline?"*
 
 **Week 2 — Transcript pipeline + diarization**
-- Build transcript ingestion (webhook or polling)
-- Integrate speaker diarization
-- Implement wearer-voice identification (based on 30-second enrollment sample)
-- Filter transcript to wearer-only segments
-- Store cleaned transcripts in Postgres with timestamps
-- **Deliverable:** for one test user, output a clean "only-you" transcript from a day's recording
+- Build transcript ingestion based on Week 1's chosen path
+- Integrate speaker diarization (Pyannote)
+- Voice enrollment flow: 30-second sample from user → embedding → store as user's voice profile
+- Real-time filter: only the wearer's speech passes into the coaching pipeline
+- Store cleaned, wearer-only transcripts in Postgres with timestamps
+- **Deliverable:** Jasmine wears pendant for a day. At end of day, Michael shows her a clean transcript of only her voice.
 
 **Week 3 — Coaching pipeline**
 - Prompt engineering for daily recap, weekly Read, monthly retrospective
-- Pattern detection across transcripts (hedging words, interruption patterns, topic switches, silence lengths)
-- Archetype classification logic (10-12 archetypes, see brand spec)
-- Context accumulation per user (Claude's context window handles week-of-data)
-- **Deliverable:** example weekly Read generated from one week of real transcripts
+- Pattern detection across transcripts:
+  - Hedging words ("I think," "just," "maybe," "kind of")
+  - Interruption patterns (if Plaud transcription marks speaker turns)
+  - Topic switches and tangents
+  - Silence lengths (if timestamps are granular enough)
+  - Tone/sentiment shifts across contexts
+- Archetype classification (10-12 archetypes — see §4 brand spec)
+- Context accumulation: Claude's context window handles a week of transcripts per user
+- **Deliverable:** Jasmine's first weekly Read generated from 7 days of her own data. Internal evaluation: does this feel uncanny or generic?
 
-**Week 4 — Slack bot + delivery**
-- Slack app setup (Sunspoke bot)
-- Bot install flow for each founder's Slack workspace
-- Daily DM delivery at user-chosen time
-- Weekly Read delivery with archetype card attachment (generated as image via Python + PIL or using a template service)
-- Commands: `/sunspoke pause`, `/sunspoke goal`, `/sunspoke note [text]`
-- **Deliverable:** end-to-end working demo in Sunspell's own Slack
+**Week 4 — Slack bot + delivery + onboarding**
+- Slack app creation (Sunspoke bot in Sunspell workspace)
+- Daily DM delivery at user-chosen time (default 8pm)
+- Weekly Read delivery with archetype card (generated as image via Python + PIL)
+- Slash commands: `/sunspoke pause`, `/sunspoke goal`, `/sunspoke note [text]`
+- Onboarding conversation flow (4 questions + voice enrollment + goal setting)
+- Day 4 gentle check-in
+- Day 7 first-Read reveal
+- **Deliverable:** Jasmine onboards herself fresh. Week 1 passes. Her first Read arrives via Slack on Day 7. End-to-end working product.
 
-**Week 5 — Onboarding + voice enrollment**
-- Onboarding conversation flow (4 questions + voice enrollment)
-- Day 4 check-in logic
-- Day 7 first-Read reveal ceremony
-- Goal confirmation flow
-- **Deliverable:** a new user can fully onboard themselves
+**Go/no-go decision at end of Week 4:**
+The Phase 1 exit criterion is simple: **do the weekly Reads feel uncanny?** If yes, proceed to Phase 3. If not, spend another 2-4 weeks iterating on coaching quality before buying 20 more units. Do not mass-purchase hardware on a mediocre coaching layer.
 
-**Week 6 — Alpha test + iteration**
-- Alpha with 1-2 Aither managers first (internal dogfood)
-- Bug fixes, prompt refinement, coaching quality iteration
-- Performance + cost monitoring (API spend per user)
-- Documentation for onboarding new founder users
-- **Deliverable:** platform ready to onboard first 5 founder depositors
+---
 
-### Ongoing engineering (months 2-6)
+#### Phase 2 — Website + Renders (Weeks 5-8) · *Aither-led*
 
-- Prompt engineering based on founder feedback (30% of Michael's time)
-- Coaching model iteration (new archetypes, pattern detection improvements)
-- Platform hardening (error handling, reliability)
-- v0.5 improvements: optional iOS app, post-conversation review, haptic triggers if Plaud firmware allows
+**Your role:** You're tuning coaching quality on Jasmine's real daily data. Expect ~25% of your time here.
 
-### Engineering budget
+- Refine prompts based on Jasmine's daily feedback ("this read was off because..." / "this one nailed it because...")
+- Build any admin tooling needed to inspect coaching outputs, re-run Reads with new prompts, A/B compare
+- Prepare multi-tenant architecture (don't build it yet, but design for it)
+- Document the stack so onboarding a second user is a clean flow, not a hack
 
-- Michael contract/salary for v0 build: $15-20K/mo × 2 months = $30-40K
-- Ongoing engineering (months 3-6): $15-20K/mo × 4 = $60-80K
-- Cloud + API costs (Claude, Plaud subs, hosting): $500-1000/mo scaling with users
-- **v0 engineering total: ~$30-45K**
-- **First year ongoing: ~$100-130K**
+---
+
+#### Phase 3 — Founder Cohort (Weeks 8-14) · *scale to 20*
+
+**Goal:** 20 founders onboarded. Full Slack-delivered coaching pipeline. Weekly feedback loop.
+
+**Week 8-9 — Multi-tenant hardening**
+- Support multiple users with independent voice profiles, goals, onboarding states, and delivery times
+- Per-user Slack workspace installation flow (each founder's Slack is a separate tenant)
+- Data isolation: each user's transcripts and patterns are fully isolated from others
+- Admin dashboard for Jasmine: see all users' status, last-delivered read, flagged coaching misses
+
+**Week 10-12 — Cohort onboarding**
+- Onboard 20 founders as they receive their reworked pendants
+- Monitor pipeline health per user (are transcripts flowing, are voice filters accurate, are Reads landing)
+- Surface coaching anomalies to Jasmine for weekly feedback calls
+
+**Week 13-14 — Iteration**
+- Weekly feedback calls with founders reveal coaching gaps — you fix them in prompt engineering or diarization tuning
+- Track cost per user (Claude API + Plaud subscriptions + hosting)
+- Performance tuning if any user has high transcript volume
+
+**Deliverables through Phase 3:**
+- All 20 founders successfully onboarded and receiving daily/weekly Reads
+- Weekly ops report to Jasmine: per-user engagement, coaching quality signals, infrastructure cost
+- Coaching model demonstrably improving week-over-week based on real user data
+
+---
+
+#### Phase 4 — Custom Hardware Interface (Months 4-9)
+
+**Goal:** Prepare for the public launch on custom hardware. Your scope expands beyond software.
+
+- Draft the hardware technical spec for the Chinese manufacturing firm (feeds into §7 v1 spec)
+- Define firmware requirements: voice-ID gating on-device (the *real* privacy story), BLE protocol, OTA update path
+- Begin iOS + Android companion app build (moves off Slack as primary surface)
+- Port the coaching backend from Plaud-dependent ingestion to custom-hardware ingestion
+- Evaluate speaker-verification-at-the-edge vs. cloud (on-device is strongly preferred for v1 privacy claims)
+
+---
+
+### 8.3 Data Pipeline Fallback Ladder
+
+**This is the single biggest technical risk in Phase 1.** Plaud may or may not have a public API. Before Week 1 investigation concludes, we have five paths ranked by effort vs. reliability. Michael picks the viable one and reports decision at end of Week 1.
+
+#### Path 1 — Plaud's official export (easiest)
+Most transcription apps have an "Export" feature. Check Plaud app settings and web dashboard.
+- **How:** Export → TXT/JSON → watched folder → backend ingestion
+- **Effort:** 1-2 days if available
+- **Reliability:** Manual per-transcript; automatable via iOS Shortcuts or watched Dropbox/iCloud
+- **ToS risk:** None
+
+#### Path 2 — Web dashboard scraping
+Plaud has a web dashboard at plaud.ai. Automate session login + transcript polling.
+- **How:** Puppeteer/Playwright, logged-in session, 10-15 min poll interval
+- **Effort:** 3-5 days including error handling
+- **Reliability:** Breaks on UI redesigns; needs monitoring
+- **ToS risk:** Moderate — most ToS prohibit automated access. Low practical risk at 20-user scale.
+
+#### Path 3 — Mobile app traffic proxy (pragmatic middle)
+Capture the internal API calls Plaud's own mobile app makes.
+- **How:** Install Plaud app on test device → route traffic through mitmproxy → capture API endpoints + auth tokens → replicate from backend
+- **Effort:** 3-5 days including proxy setup, cert-pinning bypass, endpoint documentation
+- **Reliability:** High — this is the app's own pipeline, stable until Plaud changes auth
+- **ToS risk:** Higher. Grey area. Low practical risk at 20-user scale.
+
+#### Path 4 — Direct BLE connection (hardest, most robust)
+Skip Plaud's cloud entirely. Talk to the device.
+- **How:** Reverse-engineer Plaud NotePin's BLE services (tools: nRF Connect, Wireshark with BT capture). Build Python script using `bleak` library that pairs with the pendant and pulls raw audio. Transcribe independently with Whisper.
+- **Effort:** 1-2 weeks deep technical work
+- **Reliability:** Highest — Plaud can't break the pipeline with cloud-side changes
+- **ToS risk:** Minimal — reverse-engineering hardware you own is legal (US DMCA interop exception)
+- **Bonus:** If Plaud discontinues the NotePin, your pipeline survives
+
+#### Path 5 — Phone-as-microphone fallback
+Emergency plan if nothing above works within 2 weeks.
+- **How:** Custom iOS app uses the iPhone's own mic for continuous audio capture. Pendant becomes decorative-only for v0.
+- **Effort:** 1 week for a basic iOS app (iOS audio recording APIs are well-documented)
+- **Reliability:** 100%
+- **Tradeoff:** Pendant has no function in v0 beyond brand signal. Custom hardware in v1 restores the pendant-as-capture story.
+
+#### Michael's Week 1 decision tree
+
+```
+Day 1-2: Buy Plaud NotePin. Use like a normal user. Document every feature.
+         Look for export options, API mentions, developer docs.
+
+Day 2-3: If Path 1 works → ship it. Build starts Day 3.
+
+Day 3-5: If no Path 1 → set up mitmproxy. Route phone traffic. Capture Plaud app's API.
+         - If clean, token reuse works → commit to Path 3. Build starts Day 5.
+         - If cert-pinned or fragile → evaluate Path 4 feasibility.
+
+Day 5-7: If neither Path 1 nor Path 3 viable → commit to Path 4 (BLE direct).
+         Plan 2 weeks for this path. Notify Jasmine, adjust ship timeline.
+
+Backstop: If Week 2 ends with no data pipeline → pivot to Path 5 (phone-as-mic).
+          Product ships on time; pendant becomes decorative; pitch updates.
+```
+
+**End-of-Week-1 deliverable:** One-page decision doc: *"We are using Path X. Week 2 timeline: Y. Risks: Z."*
+
+### 8.4 Key technical decisions to document
+
+Michael's design decisions live in the repo as ADRs (Architecture Decision Records). Each decision gets a one-pager.
+
+- **Voice-ID enrollment:** how we capture the 30-second sample, how we store the embedding, how we handle re-enrollment
+- **Transcript storage retention:** how long we keep raw transcripts (recommend: forever, user-controlled, encrypted)
+- **Coaching prompt versioning:** every change to a system prompt gets a version number; we can re-run any historical Read with a new prompt
+- **Multi-tenant isolation:** how we guarantee one user's data never leaks into another's coaching context
+- **Legacy contact architecture:** how data inheritance works if a user opts in
+
+### 8.5 Open technical questions for Week 1
+
+Michael should answer each of these by end of Week 1:
+
+1. Does Plaud have a public API? Enterprise/partner API? Export feature?
+2. Can the Bluetooth device name be renamed from "Plaud" to "Sunspoke" via firmware settings?
+3. What's Plaud's data retention policy in their ToS? Any conflicts with our "it's yours forever" story?
+4. Is Plaud's transcript accuracy acceptable, or do we need self-hosted Whisper?
+5. Does Plaud mark speaker turns in transcripts? (Affects diarization complexity.)
+6. What's the actual audio file format on the device? (Relevant for Path 4.)
+7. Does the pendant have persistent on-device storage, or does it sync-and-delete? (Affects Path 4 reliability.)
+
+### 8.6 What Michael is NOT doing
+
+Clear non-scope to prevent drift:
+
+- Hardware rework (Wayeez + jeweler)
+- Industrial design, packaging, brand assets (Aither)
+- Custom hardware build (Chinese firm, Phase 4)
+- Founder outreach, ambassador contracts (Jasmine)
+- Legal privacy review, patent drafting (Jasmine + lawyer)
+- iOS/Android app for v0 (Slack is the interface in v0; native apps are v1 scope)
+
+### 8.7 "Hide Plaud" requirements baked into the build
+
+Software-side concealment requirements (see §10 for full strategy):
+
+- All user-facing interfaces use only Sunspoke branding — never reference Plaud by name in UI, copy, docs, or error messages
+- If possible via firmware, rename the BLE device advertising name to "Sunspoke"
+- Users never interact with Plaud's app — onboarding flow tells them to pair via Slack-driven BLE connection if Path 4, or uses pre-configured accounts if Path 1/2/3
+- Hosting domain, email addresses, support channels all on Sunspoke-owned infrastructure
+- If a user asks directly whether their pendant is a Plaud, Michael's code should not confirm or deny — the answer comes from Jasmine per §10
+
+### 8.8 Engineering budget
+
+- Michael's compensation for v0 (Phases 1-3, weeks 1-14): ~$15-20K/mo × 3.5 months = **$52-70K**
+- Ongoing engineering through Phase 4 (months 4-9): ~$15-20K/mo × 5 months = $75-100K
+- Cloud + API costs: ~$500-1000/mo, scales with user count
+- **v0 engineering total (through Phase 3 ship): $52-70K**
+- **First 12 months total: $150-200K engineering**
+
+### 8.9 Stack summary (one-pager for Michael's reference)
+
+| Layer | Choice | Why |
+|---|---|---|
+| Runtime | Python 3.11+ | ML ecosystem, Claude SDK, Pyannote native |
+| Web framework | FastAPI or Flask | Simple, well-documented |
+| Database | Postgres 15+ | Solid defaults, JSON support for flexible schemas |
+| ORM | SQLAlchemy or Prisma | Either works |
+| LLM | Claude API (Opus + Sonnet) | Best quality for coaching; direct API control |
+| Diarization | Pyannote-audio | Free, accurate, well-maintained |
+| Transcription | Plaud's (if accessible) OR Whisper Large V3 | Depends on Path chosen |
+| Slack | slack-bolt (Python) | Official, clean API |
+| Hosting | Fly.io or Railway | Cheap, fast deploy, no DevOps overhead |
+| Secrets | Doppler or 1Password CLI | No secrets in code, ever |
+| Monitoring | Sentry + Plausible | Minimal surface, no overkill |
+| Email | Postmark or Resend | Transactional only |
+| Stripe | stripe-python | For Day 30 conversion payments if Path B pricing |
 
 ---
 
