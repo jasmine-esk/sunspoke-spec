@@ -11,7 +11,7 @@
 0. [What Sun OS Is](#0-what-sun-os-is)
 1. [Sunspell — The Venture Lab](#1-sunspell--the-venture-lab)
 2. [The Aither ↔ Sunspell Loop](#2-the-aither--sunspell-loop)
-3. [Portfolio Map](#3-portfolio-map)
+3. [North Star & System — How the Products Work Together (and Don't)](#3-north-star--system--how-the-products-work-together-and-dont) — *portfolio map inside*
 4. [Sun OS — Operational Tools for Aither](#4-sun-os--operational-tools-for-aither)
 5. [Sunspell Consumer Ventures](#5-sunspell-consumer-ventures)
 6. [Priority Matrix](#6-priority-matrix)
@@ -92,28 +92,170 @@ Because most design studios see problems they could solve, but never build the p
 
 ---
 
-## 3. Portfolio Map
+## 3. North Star & System — How the Products Work Together (and Don't)
+
+### The Two-Path North Star
+
+Every Sunspell product is built to satisfy two north stars simultaneously:
+
+**Path A — Subscribable Standalone.**
+Each product is fully valuable on its own. A user can adopt Sundial without ever touching Sunpull. A user can buy Sunspoke without ever using Sool. No forced bundling. No "you need all of them." Each product earns its own revenue, its own users, its own retention.
+
+**Path B — Unified OS (Sun OS).**
+Over time, the products compound. A user who runs Sundial benefits when Sunpull captures their web saves. A user with Sunspoke benefits when Sool eventually ships with complementary emotional data. The portfolio aggregates into something larger than the sum of its parts — a Sun OS that knows the user across domains.
+
+**Why both, not just one?**
+Starting with the unified vision is too expensive and untrusted — nobody buys "an operating system" on the strength of a pitch. Users will pay for a specific problem today. The portfolio emerges from solving many specific problems well, then weaving them together later. Path A funds Path B.
+
+### Portfolio Map
 
 | Product | Type | Status | Description |
 |---|---|---|---|
 | **Sunpull** | Operational tool | In progress (Michael) | Pinterest-style save + memory layer. Captures saves across platforms (LinkedIn, IG, forwarded links) into tagged boards. Foundational for every other tool. |
 | **Sundial** | Operational tool | Next (spec ready) | Slack-only PM system. Retainer flow, capacity/debt model, Monday/Friday rhythm. Replaces the previous Aion PM bot. |
-| **Sunspoke (internal)** | Operational tool | Live thinking, not started | Communication coaching tool for Aither's managers. Plaud + Claude + Slack. Runs as R&D for the consumer product. |
-| **Sunrun** | Operational tool | Later | Composable execution blocks (Extract / Generate / Compare / Refine / Evaluate). Powers the audit-funnel service pivot. This is the moat inside Sun OS. |
+| **Sunspoke (internal)** | Operational tool | Live thinking, not started | Communication coaching tool for Aither's managers. Runs as R&D for the consumer product. |
+| **Sunrun** | Operational tool | Later | Composable execution blocks (Extract / Generate / Compare / Refine / Evaluate). The moat inside Sun OS. |
 | **Sunreach** | Operational tool | Later | Sales layer: prospect tracking, custom outbound, proposal drafts. Built on Sunpull + Sunrun. |
-| **Sunkeep** | Operational tool | Urgent after Sundial | Client account health, renewal timing, QBR prep. Urgent because current retainers end July 31. |
-| **Sunbill** | Operational tool | Later | AR / invoicing / payment nudges. Sundial handles L1 reminders until this exists. |
-| **Sunhire** | Operational tool | On demand | Candidate pipeline, interview notes. Only built when actively recruiting. |
+| **Sunkeep** | Operational tool | Urgent after Sundial | Client account health, renewal timing, QBR prep. |
+| **Sunbill** | Operational tool | Later | AR / invoicing / payment nudges. |
+| **Sunhire** | Operational tool | On demand | Candidate pipeline, interview notes. |
 | --- | --- | --- | --- |
-| **Sunspoke (consumer)** | Consumer venture | Scoping (Q2 2026) | Voice coaching product. Three SKUs: Object (desk sculpture), Wear (pendant), Clip (phone accessory). Full spec lives in `sunspoke.md`. |
-| **Sapour** | Consumer venture | Conceptual | Scent × identity × attraction. Scent profile capture, wearable fragrance generation, matching. |
-| **Airon** | Consumer venture | Conceptual | Smart travel concierge. Refundable flight booking, price tracking, auto-rebook. Adjacent to travel automation. |
-| **Sool** | Consumer venture | Conceptual | Emotional operating system. Twin AI that reflects the user — journaling, habits, behavioral tracking, long-term pattern learning. |
-| **Sumani** | Consumer venture | Conceptual | Knowledge / intent / systems. Operating system for ideas and taste. Projects → blocks → composable workflows. |
+| **Sunspoke (consumer)** | Consumer venture | Active (Q2 2026) | Voice coaching. Three SKUs: Object, Wear, Clip. Full spec: `sunspoke.md`. |
+| **Sapour** | Consumer venture | Conceptual | Scent × identity × attraction. |
+| **Airon** | Consumer venture | Conceptual | Smart travel concierge. |
+| **Sool** | Consumer venture | Conceptual | Emotional OS. Twin AI reflection. |
+| **Sumani** | Consumer venture | Conceptual | Knowledge / intent OS. Projects → blocks → workflows. |
 
-**Architectural distinction:**
-- Operational tools stay inside Sunspell, serve Aither primarily, may never go public
-- Consumer ventures get their own standalone brands, their own websites, their own go-to-market motions — Sunspell just owns the cap table
+### System architecture — interaction tiers
+
+Products fall into four tiers. Higher tiers read from lower tiers; lower tiers never reach up.
+
+```
+                    ┌──────────────────────────────┐
+                    │   AUTH / IDENTITY            │
+                    │   (shared service · one      │
+                    │    Sunspell account)         │
+                    └──────────────┬───────────────┘
+                                   │
+                    ┌──────────────▼───────────────┐
+   Tier 1           │        SUNPULL               │
+   Foundational     │    (memory layer)            │
+                    │    everything reads from this │
+                    └─────┬──────────┬─────────────┘
+                          │          │
+          ┌───────────────┤          ├──────────────┐
+          │               │          │              │
+   ┌──────▼─────┐   ┌─────▼────┐  ┌──▼──────┐  ┌────▼─────┐
+   │  SUNDIAL   │   │ SUNRUN   │  │SUNREACH │  │ SUMANI   │
+   │   (PM)     │   │ (exec)   │  │ (sales) │  │(know.)   │
+   └──────┬─────┘   └──────────┘  └─────────┘  └──────────┘
+          │   Tier 2                Tier 3         Tier 4
+          │   Orchestration         Functional     Consumer
+          │
+          ├─► SUNKEEP ─► SUNBILL
+          │   (accts)    (AR)
+          │
+          └─► SUNSPOKE (internal)
+                    │
+                    │  R&D loop feeds consumer product
+                    ▼
+              ┌──────────────────────────────────┐
+              │ CONSUMER VENTURES (Tier 4)       │
+              │   — own brands, own GTM —        │
+              │                                   │
+              │   Sunspoke  Sool  Sumani          │
+              │   Sapour    Airon                 │
+              │                                   │
+              │   Each standalone.                │
+              │   Identity is the only shared     │
+              │   service across them.            │
+              └──────────────────────────────────┘
+```
+
+### Which products talk to which
+
+**Strong dependencies (these products require each other to deliver their value):**
+
+| Product | Requires | Why |
+|---|---|---|
+| Sunreach | Sunpull | Can't do personalized outbound without user's saved context |
+| Sunrun | Sunpull | Can't compose deliverables without reference material |
+| Sunkeep | Sundial | Can't track account health without project status data |
+| Sunbill | Sunkeep | Can't send invoices without knowing what to bill |
+
+**Weak dependencies (better together, still standalone):**
+
+| Product A | Product B | What the pairing unlocks |
+|---|---|---|
+| Sunspoke consumer | Sool | Full reflection stack: what you said + how you felt |
+| Sumani | Sunpull | Sumani becomes a consumer surface for the user's Sunpull data |
+| Sunhire | Sunpull | Optional saves tagged "candidate" feed pipeline |
+| Sunspoke internal | Sundial | Team communication patterns feed team capacity decisions |
+
+**No dependencies (fully standalone):**
+
+| Product | Why standalone |
+|---|---|
+| Sunhire | Hiring data doesn't need portfolio context |
+| Sapour | Scent capture is self-contained |
+| Airon | Travel booking lives on its own |
+| Sunspoke internal | Coaching pipeline runs alone; upstream feed to Sundial is optional |
+
+### The independence discipline
+
+Every product must pass all three tests before inclusion in Sunspell:
+
+1. **One-sentence value test.** Can its value be explained in one sentence without referencing another Sun product? Yes = include. No = it's a feature, not a product.
+2. **Alone-value test.** Can a user derive value from it without owning any other Sun product? Yes = include. No = bundle it into another product.
+3. **North star metric test.** Does it have its own metric that defines success independent of other products? Yes = include. No = it doesn't deserve its own SKU.
+
+### The interdependence reward
+
+When users do own multiple Sun products, they get multiplied value:
+
+- **Sunpull + Sundial** = context-aware project management (Sundial knows what you've been saving and noting)
+- **Sunpull + Sunreach** = deeply personalized outbound (Sunreach knows every interaction you've had with a prospect)
+- **Sunspoke + Sool** = the full reflection stack (what you said + how you felt)
+- **Sumani + Sunpull** = a second brain with native memory (Sumani reads directly from your Sunpull saves)
+- **Sunspoke internal + Sundial** = team coordination that understands how each person communicates
+
+The unified OS emerges not from forcing bundles, but from **making adoption of the second product dramatically more valuable once the first is in place.** That's the flywheel — each new product in a user's stack makes every existing product sharper.
+
+### Architectural distinction: operational vs consumer
+
+**Operational tools (Sunpull, Sundial, Sunrun, Sunreach, Sunkeep, Sunbill, Sunhire, Sunspoke-internal):**
+- Live inside Sunspell
+- Serve Aither primarily
+- May never go public
+- Deep cross-product dependencies allowed and encouraged
+- Share one database, one auth, one infrastructure
+
+**Consumer ventures (Sunspoke-consumer, Sool, Sumani, Sapour, Airon):**
+- Each gets its own standalone brand
+- Each gets its own website, go-to-market, pricing
+- Each can spin out as its own company eventually
+- Sunspell just owns the cap table
+- Shared identity is the *only* coupling; everything else is independent
+
+The line matters because operational tools can afford to be deeply interdependent — they're one team, one roadmap. Consumer ventures cannot — each has to stand on its own emotional story in the market.
+
+### Strategic timeline — when does the unified OS appear?
+
+**Short-term (2026–2027):** Each product launches standalone. Sunpoke is the first external product. Revenue, retention, and brand earned per product. No cross-product marketing.
+
+**Medium-term (2028):** Cross-product flows become visible. Users who own multiple products see meaningful advantages. Identity consolidates. Optional bundles appear (never required). The first "power users" naturally adopt multiple products.
+
+**Long-term (2029+):** Sun OS emerges as a meta-brand. Individual products remain first-class citizens. Enterprise customers buy the whole stack. Consumer power users graduate into a unified experience. New products added to the portfolio plug into existing infrastructure automatically.
+
+### The core insight
+
+**Portfolio products that only work together die alone.**
+Every Sun product must justify its existence standalone — otherwise it's stuck behind the adoption of its neighbor, and both fail.
+
+**Portfolio products that only work alone never compound.**
+If there's no flywheel, we're just running a collection of unrelated SaaS products. The portfolio has to mean something at the aggregate level.
+
+Sunspell's job is the balance: each product 100% valid alone, every pair meaningfully better together. That dual constraint is what makes the portfolio defensible.
 
 ---
 
