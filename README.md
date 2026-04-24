@@ -4,30 +4,33 @@ Working documents for Sunspoke (consumer venture) and Sunspell (parent venture l
 
 ## The canonical docs
 
-- **[`sun-os.md`](./sun-os.md)** — Sunspell venture lab umbrella. Portfolio map (Sunpull, Sundial, Sunspoke, Sunrun, Sunreach, Sunkeep, Sunbill, Sunhire + consumer ventures Sapour, Airon, Sool, Sumani). Aither ↔ Sunspell loop. Priority matrix. Capital. Team.
-- **[`sunspoke.md`](./sunspoke.md)** — The final comprehensive Sunspoke doc. Mission, three-SKU product family (Object, Wear, Clip), phased roadmap (sculpture-first), hardware and tech specs, UI/UX, brand, packaging, cohort strategy, pricing paths, emotional LED vision, costs, legal, team, website launch tasks, locked decisions.
-- **[`wayeez-brief.md`](./wayeez-brief.md)** — Focused brief for Wayeez (design intern). Three-phase scope: vendor research, flow mockup drafts, packaging coordination, continuous iteration.
-- **[`founder-statement.md`](./founder-statement.md)** — Drafted manifesto. Awaiting founder's edit to lock the final voice. Finalization tracked as a website launch task in `sunspoke.md` §17.5.
+- **[`sun-os.md`](./sun-os.md)** — Sunspell venture lab umbrella. Portfolio map (all SUN products + cult products). Aither ↔ Sunspell loop. Priority matrix. Capital. Team.
+- **[`sunspoke.md`](./sunspoke.md)** — The consolidated final-final Sunspoke doc. Mission, three-SKU family (Object, Wear, Clip), phased roadmap (sculpture-first), hardware, tech, UI/UX, brand, packaging, cohort strategy, pricing paths, emotional LED, costs, legal, team, website launch tasks, locked decisions. **Includes Appendix A (Wayeez's design-intern brief) and Appendix B (founder statement draft).** Appendix C is a compliance audit against the Aither PRD Template.
+- **[`index.html`](./index.html)** — Browsable web viewer with sidebar TOC + Giscus comments
 
 ## Read order
 
-1. **New to the whole thing?** `sun-os.md` → then `sunspoke.md`
-2. **Working only on Sunspoke?** `sunspoke.md`
-3. **Wayeez (design intern)?** `wayeez-brief.md` → then `sunspoke.md` §1, §2, §4, §7, §8, §9
-4. **Michael (engineering)?** `sunspoke.md` §6 first, then §1, §2, §7
-5. **Aither (brand and senior design)?** `sunspoke.md` §4, §7, §8, §9, §17.5 (website launch tasks)
+1. **New?** `sun-os.md` → `sunspoke.md`
+2. **Only Sunspoke?** `sunspoke.md`
+3. **Wayeez (design intern)?** `sunspoke.md` Appendix A, then §1, §2, §4, §7, §8, §9
+4. **Michael (engineering)?** `sunspoke.md` §6, then §1, §2, §7
+5. **Aither (brand + senior design)?** `sunspoke.md` §4, §7, §8, §9, §17.5 (website launch tasks), Appendix B
 
 ## How to comment
 
-- **Inline comments** on specific sections — scroll to the bottom of any published page (Giscus widget, GitHub sign-in required to post)
-- **Threaded discussion** — [the Discussions tab](../../discussions) of this repo
-- **Direct edits** — submit a pull request against the relevant doc
+- **Inline per-section:** scroll to the bottom of the published page (Giscus, GitHub login to post)
+- **Threaded:** the [Discussions tab](../../discussions) of this repo
+- **Direct edits:** submit a pull request
 
 ## Live URLs
 
-- Browsable viewer: https://jasmine-esk.github.io/sunspoke-spec/
+- Browsable: https://jasmine-esk.github.io/sunspoke-spec/
 - Repo: https://github.com/jasmine-esk/sunspoke-spec
+
+## Relationship to the Aither PRD Template
+
+`sunspoke.md` is a consolidated master doc. The canonical Aither PRD Template (at `~/coding-agents/prd-template-revisions.md`) specifies **six** separate specs per product (Product, Brand, Design, Tech, Website, Roadmap). Appendix C of `sunspoke.md` audits which template slides are covered, which are gaps, and what a full split-out would look like. Template-driven builds split the content into 6 docs; this consolidated doc is an early-stage compromise.
 
 ## Updates
 
-These docs are living. They change as we learn. Git history preserves every change. Commits ride continuously.
+Living docs. Changes tracked in git history. Commits continuously.

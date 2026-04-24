@@ -916,3 +916,301 @@ Don't re-litigate:
 **Engineering lead:** Michael
 **Brand:** Aither
 **Review cadence:** Weekly during Phase 1-3, monthly thereafter
+
+---
+
+## Appendix A — Wayeez's Brief (Design Intern)
+
+*Formerly in a separate `wayeez-brief.md`. Merged in as part of the final-final consolidated doc.*
+
+### Context — who Wayeez is and what he owns
+
+Wayeez is the design intern on Sunspoke. He is the connective tissue between Jasmine, Aither, and Michael. He makes the trains run. He does the research that unblocks senior decisions. He drafts and iterates on flows. He chases vendors. He tracks what's shipping and what's stuck.
+
+He is **not** the senior creative lead — Aither owns that, with Jasmine as product owner. But he touches every part of the product, and the quality of his research and coordination directly determines how fast this thing ships.
+
+### What he owns end-to-end
+- Vendor research and outreach (jewelers, industrial designers, packaging vendors, fabrication shops)
+- Moodboards and visual reference libraries for every vendor brief, every flow design, every packaging concept
+- Draft flow mockups in Figma (Slack conversations, Weekly Read layouts, archetype cards)
+- Vendor management (NDAs, quotes, schedules, QC tracking, back-and-forth)
+- Project coordination (weekly status, meeting notes, handoffs between Jasmine / Aither / Michael)
+- Logistics (shipping, receiving, inventory tracking)
+
+### What he supports (but doesn't own)
+- Final creative decisions → Aither (quality) + Jasmine (product)
+- Which industrial designer we hire → he shortlists, Jasmine + Aither choose
+- Final packaging aesthetic → he sources candidates, Aither art-directs
+- Flow copy and final layouts → Aither refines his drafts before Michael implements
+- Engineering decisions → Michael's call
+
+### Three-phase arc
+
+**Phase 1 (Weeks 1-4) — Jasmine's Prototype Month**
+- Research and shortlist 3-5 fabricators for Phase 1 prototype (Jasmine selects)
+- Coordinate fabricator with Michael on hardware dimensions
+- Start Phase 2 vendor research (industrial designers, packaging) in parallel
+- Deliverable: one working prototype Object in Jasmine's hands by Week 3-4
+
+**Phase 2 (Weeks 5-10) — Final Object Design + Packaging + Flows**
+- Shortlist industrial designers (Jasmine + Aither select)
+- Support final Object form design (moodboards, coordination, milestone tracking)
+- Source and commission packaging vendors (Aither art-directs)
+- Draft all UX flows in Figma (onboarding, daily recap, Weekly Read, archetype cards, slash commands, error states) — Aither reviews and refines before Michael implements
+- Production of 20 final Objects by Week 10
+
+**Phase 3 (Weeks 10-14) — Ship and Iterate**
+- QC each unit with Michael (audio, Bluetooth, charging, finish)
+- Hand-assemble 20 presentation boxes with Jasmine (she signs letters)
+- Attend weekly founder feedback calls, surface themes
+- Iterate flow drafts 2-3x per week based on feedback
+- Begin Phase 5 vendor research (Wear + Clip designers)
+
+### Budget for his workstream
+
+| Line item | Budget | Phase |
+|---|---|---|
+| Wayeez comp (intern stipend) | $3-5K/mo × 3 months = ~$9-15K | All phases |
+| Phase 1 fabricator prototype | $200-500 | Phase 1 |
+| Industrial designer fee (external hire) | $20-40K | Phase 2 |
+| 20 Object production | $6K-12K | Phase 2 |
+| Packaging (20 units) | $2K-4K | Phase 2 |
+| Sample and iteration materials | $1-2K | All phases |
+| NDAs and contracts | $1K | All phases |
+| **Workstream total** | **$39-74K** | 14 weeks |
+
+Plus 10% contingency.
+
+### Working rhythm
+- **Weekly with Jasmine:** 30 min, Fridays. Status + blockers + decisions needed.
+- **Mid-week with Michael:** 30 min. Design handoffs, implementation status.
+- **Aither async in Figma.** Creative reviews happen in comments.
+- **Attends** all founder feedback calls during Phase 3 (listens, takes notes).
+
+### Success criteria at Week 14
+- 20 Founder's Edition Objects shipped
+- Founders describe Object as *"beautiful"* or *"I'd own this without the software"*
+- Slack flows feel natural and warm — no "robotic" complaints
+- Archetype cards get screenshotted and shared
+- ≥12 founders post on LinkedIn within 30 days
+- Phase 5 vendor shortlists ready
+- Packaging unprompted praise from ≥3 founders
+- Aither and Michael both say Wayeez unblocked them consistently
+
+### Non-negotiables Wayeez holds on
+
+1. **Object over gadget.** If it feels like tech, redesign. Jewelry/art-object = close.
+2. **Weight matters.** Lightness reads as cheap. Substantial in hand.
+3. **No plastic.** Anywhere user-visible.
+4. **Silence.** No chimes, beeps, audible notifications from hardware. Haptic only, if anything.
+5. **Specificity in flow copy.** Never *"You said a lot of filler words."* Always *"You said 'just' 47 times today, mostly when making requests."*
+6. **Pull over push.** Users pull insight when ready; push reserved for scheduled artifacts.
+7. **Hide Plaud (and any other off-the-shelf hardware).** No base-hardware branding anywhere.
+
+### First week actions
+1. Unbox the Plaud NotePin + Chinese knockoffs (already ordered). Photograph, compare size/weight/feel.
+2. Read `sunspoke.md` and `sun-os.md`
+3. Start a vendor tracking sheet in Notion or Google Sheets
+4. Research 3-5 Phase 1 fabricators; request quotes
+5. Start a moodboard (Are.na or Figma) for the sculptural Object — minimum 30 reference images
+6. Draft a one-pager: *"Here's what I understand Sunspoke to be and what the first month looks like for me"* — share with Jasmine at Week 1 check-in
+
+### Questions to ask Jasmine in Week 1
+1. What finish for the Phase 1 prototype? (Gold plate / silver / something experimental?)
+2. Your personal "million-dollar product" reference beyond Oura and Whoop?
+3. How involved in industrial designer selection? (Rubber-stamp shortlist or sit in on calls?)
+4. Budget flexibility — if the right designer is $45K not $30K, do we have room?
+5. Hard deadline for shipping Founder's Editions? (Everything gates backwards.)
+
+---
+
+## Appendix B — Founder Statement (Draft v1 for Website)
+
+*Formerly in `founder-statement.md`. Drafted from the founder's own origin language. Awaiting founder's editorial pass before landing-page publish (tracked in §17.5 Website Launch Tasks).*
+
+### The draft
+
+I run a design studio. Which means I'm in ten conversations a day — client kickoffs, team 1:1s, investor calls, partner intros, founder texts, vendor threads. Somewhere between those conversations, I'm supposed to be leading.
+
+I know the version of me that works. I can read a room. I can reframe a bad idea into a good one. I can land a hard conversation when I've had time to think about it.
+
+But there's a second layer I've never been able to see clearly. The ways I soften requests when I shouldn't. The patterns that leak out when I'm tired. The words I default to with different kinds of people. The small moves I make without realizing, because I'm the one making them.
+
+I've thought about hiring a coach. A coach could probably help. But a coach costs $300 an hour, and their session is already over by the time the pattern I needed to catch is in the rearview mirror. By the time I'm sitting across from them, I've already forgotten the exact sentence I said on Tuesday at three in the afternoon that set the whole conversation on a different track.
+
+I wanted a mirror that could be present for all of it.
+
+One that listens only to me — not to the people around me, not to the room, not to anything I don't want it to hear. Something that notices the things I can't, and gives them back to me in the quiet of the evening, once the day is done.
+
+Not an assistant. The opposite. It doesn't answer my questions, suggest my next move, or interrupt the calls I'm on. It does one thing: once a day, once a week, it returns to me what I actually sounded like. In my own voice. In the words I actually used.
+
+That's Sunspoke.
+
+I built it for people who are already doing the work — founders, operators, therapists, coaches. The people who already know they have blind spots and want the reps.
+
+The first twenty are by invitation.
+
+If you're reading this, you might be one of them.
+
+— Jasmine
+
+### Editorial notes
+
+- **Word count:** 345 words (target: 300-500)
+- **Reading time:** ~2 min aloud, ~90 sec silent. Right length for landing page scroll.
+- **What's working:** personal specificity in opening; known strengths / unknown gaps directly lifted from founder's origin language; $300/hr coach critique with specific detail; "mirror, not assistant" positioning baked in; literal invitation instead of CTA.
+- **Founder may want to change:** opening line (more specific moment); the $300/hour detail (could be replaced with a real experience if founder has worked with a coach); the "ten conversations a day" framing (could be replaced with a single specific moment); optional softening of "first twenty are by invitation" if ever used beyond the 20.
+- **Should not change:** the "mirror, not assistant" framing; "listens only to me"; "in my own voice, in the words I actually used"; the tension → gap → critique → product → invitation structure.
+
+### Historical origin language (preserved for future revisions)
+
+The founder's raw words that seeded this draft (April 2026):
+
+> *"The origin story really is that I want to be a better leader, better communicator, and sometimes the day-to-day grind really holds me back. Especially being a mass executor, working in startup hustle culture, and also needing to work with clients and stakeholders all the time. I do realize my strengths but a lot of my gaps are unknown. A coach can't work with me realtime."*
+
+Two phrases anchor any future revision:
+
+- *"I do realize my strengths but a lot of my gaps are unknown"* — the product's central insight
+- *"A coach can't work with me realtime"* — the product's central critique of alternatives
+
+---
+
+## Appendix C — Template Compliance Audit (vs Aither PRD Template v1)
+
+*`sunspoke.md` is a consolidated master doc. The Aither PRD Template specifies six separate specs per product (Product, Brand, Design, Tech, Website, Roadmap). Below is a fidelity audit showing which template requirements are met here vs. gaps.*
+
+### Template mapping
+
+| PRD Template Spec | Lives in `sunspoke.md` | Status |
+|---|---|---|
+| Master Sunspell PRD | `sun-os.md` (separate doc) | ✅ Separate file |
+| Product Spec (16 slides) | §0-4, §10-11, §14-19 | ⚠️ Partial |
+| Brand Spec (14 slides) | §8, §4.1, §8 (scattered) | ⚠️ Partial |
+| Design Spec (15 slides) | §7 | ⚠️ Partial |
+| Tech Spec (15 slides) | §6 | ⚠️ Partial |
+| Website Spec (13 slides) | §6 (website section) + §17.5 + Appendix B | ⚠️ Partial |
+| Roadmap Spec (8 slides) | §4 (phased roadmap) + TodoWrite list externally | ⚠️ Partial |
+
+### Product Spec — compliance against 16 slides
+
+| Slide | Required | Status in sunspoke.md |
+|---|---|---|
+| 1 — Cover | ✅ Header has name, version, DRI, date | ✅ |
+| 2 — North Star | ✅ §0 Mission & Thesis | ✅ |
+| 3 — Thesis | ✅ §0 Thesis | ✅ |
+| 4 — Problem | ⚠️ Implicit in Appendix B founder statement; not called out | **Gap** |
+| 5 — Mental Model | ⚠️ "Mirror not assistant" appears but not labeled as Mental Model with "X meets Y" | **Gap** |
+| 6 — Personas | ⚠️ §1 mentions "founders, operators, therapists, coaches" but not full persona slides | **Gap** |
+| 7 — Principles | ✅ §2 Shared Product Principles (7 items) | ✅ |
+| 8 — Competitive Landscape | ❌ Not covered | **Gap** |
+| 9 — Positioning | ⚠️ §0 has tagline but no "one paragraph elevator pitch" | **Gap** |
+| 10 — Business Model | ✅ §11 Pricing Paths | ✅ |
+| 11 — Dependencies | ⚠️ Implicit in §6 Tech Spec (Plaud, Claude) but not a dedicated slide | **Gap** |
+| 12 — Phases | ✅ §4 Phased Roadmap | ✅ |
+| 13 — Go-to-Market | ✅ §10 The 20 Founder Cohort | ✅ |
+| 14 — Success Metrics | ✅ §17 Success Metrics | ✅ |
+| 15 — Kill Criteria | ❌ Not explicit (risks are listed but no sunset thresholds) | **Gap** |
+| 16 — Risks | ✅ §19 Risks | ✅ |
+
+### Brand Spec — compliance against 14 slides
+
+| Slide | Required | Status |
+|---|---|---|
+| 2 — Positioning Line (logo-removed test) | ⚠️ "A mirror you can live with" appears but not labeled as THE positioning line | **Gap** |
+| 3 — Archetype (imagined quote) | ❌ Not covered | **Gap** |
+| 4 — NOT List (4-5 negatives) | ⚠️ Some scattered ("Not an assistant") but not a dedicated NOT list | **Gap** |
+| 5 — Brand Principles (5 numbered, noun + foil) | ❌ Not covered in this format | **Gap** |
+| 6 — Tone (4 adjectives, last negative) | ⚠️ "Warm, specific, observational" listed but not in the required format | **Gap** |
+| 7 — House Phrases (3-5 hero taglines) | ❌ Not covered | **Gap** |
+| 8 — Microcopy Patterns (before/after table) | ❌ Not covered | **Gap** |
+| 9 — Microcopy Classes (per state) | ❌ Not covered | **Gap** |
+| 10 — Logo & Spatial Logic | ❌ Not covered (Aither TBD) | **Gap (external to sunspoke.md)** |
+| 11 — Color | ⚠️ §8 has color palette but not "name / role / one-sentence rationale" format | **Gap** |
+| 12 — Typography | ⚠️ §8 has typography notes but not full spec | **Gap** |
+| 13 — Imagery & Attitude | ⚠️ §8 references exist, not structured | **Gap** |
+| 14 — Falsifiable Tests | ❌ Not covered | **Gap** |
+
+### Design Spec — compliance against 15 slides
+
+| Slide | Required | Status |
+|---|---|---|
+| 3 — IA Map | ❌ Not covered | **Gap** |
+| 4 — Component Inventory | ❌ Not covered | **Gap** |
+| 5 — User Journey (Discover → Reactivate) | ⚠️ §4 Phased Roadmap covers time-arc; lifecycle stages not labeled | **Gap** |
+| 6 — Feature Inventory (F-IDs table) | ❌ Not covered | **Gap** |
+| 7 — Use Cases | ❌ Not covered as formal UC-IDs | **Gap** |
+| 8 — Happy Path | ❌ Not labeled as THE happy path | **Gap** |
+| 9 — User Flows (per UC with state tables) | ⚠️ §7 has flows narratively but no state tables, no Claude build notes | **Gap** |
+| 10 — Surfaces (with interaction matrix) | ❌ Not covered | **Gap** |
+| 11 — Onboarding (<60s input bar) | ✅ §7 has 5-minute onboarding; exceeds template's <60s bar | ⚠️ Deviates |
+| 12 — Error Taxonomy | ❌ Not covered | **Gap** |
+| 13 — Accessibility Baseline | ❌ Not covered | **Gap** |
+| 14 — Instrumentation / Event Taxonomy | ❌ Not covered | **Gap** |
+| 15 — Traceability Checklist | ❌ Not covered | **Gap** |
+
+### Tech Spec — compliance against 15 slides
+
+| Slide | Required | Status |
+|---|---|---|
+| 2 — Architecture diagram | ✅ §6 has ASCII diagram | ✅ |
+| 3 — Data Model (schemas, relationships) | ❌ Not covered | **Gap** |
+| 4 — Ingestion / Storage | ⚠️ §6 covers ingestion paths; retention partial | **Gap** |
+| 5 — External Integrations | ✅ §6 covers Plaud, Claude, Slack | ✅ |
+| 6 — Auth / Permissions | ❌ Not covered | **Gap** |
+| 7 — Cross-Product Interop (Provides/Consumes) | ❌ Not covered | **Gap** |
+| 8 — Phased Tech Approach | ✅ §6 has 4-phase breakdown | ✅ |
+| 9 — Observability | ⚠️ §6 mentions Sentry + Plausible; sparse | **Gap** |
+| 10 — Privacy & Data Handling | ⚠️ §15 Legal & IP partial | **Gap** |
+| 11 — Cost Model | ✅ §14 Cost Breakdown | ✅ |
+| 12 — Migration Path to Unified OS | ❌ Not covered | **Gap** |
+| 13 — Tech Risks | ⚠️ §19 Risks has some tech items | **Gap** |
+| 14 — Open Tech Questions | ✅ §6.5 has 7 open tech Qs | ✅ |
+
+### Website Spec — compliance against 13 slides
+
+| Slide | Required | Status |
+|---|---|---|
+| 2 — Goal (primary conversion) | ⚠️ Deposit flow referenced but no explicit conversion threshold | **Gap** |
+| 3 — Audience (visitor personas) | ❌ Not distinguished from product personas | **Gap** |
+| 4 — Hero / Tagline (3-5 ranked options) | ⚠️ Only one tagline ("A mirror you can live with") — no alternates | **Gap** |
+| 5 — Message Hierarchy (10s / 30s / 2min) | ❌ Not covered | **Gap** |
+| 6 — CTAs | ⚠️ "Reserve your number" is implied; no hierarchy spec | **Gap** |
+| 7 — Sitemap | ❌ Not covered | **Gap** |
+| 8 — Content Blocks per page | ⚠️ §6 structures the long-scroll but doesn't call out blocks formally | **Gap** |
+| 9 — Copy | ✅ Appendix B has founder statement draft | ✅ |
+| 10 — Asset Requirements (tiered) | ❌ Not covered | **Gap** |
+| 11 — Social Proof | ❌ Not covered | **Gap** |
+| 12 — SEO / Meta | ❌ Not covered | **Gap** |
+| 13 — Analytics | ⚠️ Plausible mentioned; no event/funnel definition | **Gap** |
+
+### Roadmap Spec — compliance against 8 slides
+
+| Slide | Required | Status |
+|---|---|---|
+| 2 — Task Inventory (T-ID table) | ⚠️ Lives in TodoWrite, not in doc | **Partial** |
+| 3 — Dependency Graph | ❌ Not covered | **Gap** |
+| 4 — Capacity & Effort Budget | ❌ Not covered | **Gap** |
+| 5 — Weekly Recommendations | ❌ Not covered (no Sundial yet) | **Deferred** |
+| 6 — Decision Log | ⚠️ "Decisions Locked" appendix exists but not full format | **Partial** |
+| 7 — Cross-Product Coordination | ❌ Not covered | **Gap** |
+| 8 — Weekly Retro | ❌ Not covered | **Gap** |
+
+### Summary of gaps
+
+- **Fully compliant:** 0 of 6 product-level specs
+- **Most complete:** Product Spec (~10/16), Tech Spec (~6/15)
+- **Least complete:** Design Spec (~1/15), Brand Spec (~1/14), Website Spec (~1/13), Roadmap Spec (~1/8)
+
+### Recommended remediation path (in priority order)
+
+1. **Brand Spec** — write a dedicated `brand.md` (or §8 expansion) with Positioning Line, Archetype Quote, NOT List, Tone (4 adj last negative), House Phrases, Microcopy Patterns, Falsifiable Tests. Aither-led.
+2. **Design Spec** — write a dedicated `design.md` with IA Map, Feature Inventory F-IDs, Happy Path, User Flows with state tables, Onboarding screen-by-screen. Wayeez drafts + Aither refines.
+3. **Website Spec** — expand §17.5 into a real Website Spec: 3-5 hero tagline options, message hierarchy (10s/30s/2min), sitemap, asset tier decision. Aither-led.
+4. **Product Spec additions** — fill Problem, Mental Model ("X meets Y"), Personas, Competitive Landscape, Positioning paragraph, Kill Criteria. Jasmine-led.
+5. **Tech Spec additions** — fill Data Model, Auth, Cross-Product Interop (Provides/Consumes), Migration Path to Unified OS. Michael-led.
+6. **Roadmap Spec** — when Sundial ships, migrate TodoWrite to dedicated `roadmap.md`. Jasmine-led (bootstrap mode).
+
+### The meta point
+This audit shows the Aither PRD Template is working — it surfaces gaps in `sunspoke.md` that would otherwise go unnoticed until build time. The template's demand for structure (not just content) is what makes it valuable. Most of the gaps here are specifications that *exist conceptually* in the team's heads but aren't written down in a build-ready way.
+
+**Recommended action:** rather than patch `sunspoke.md` to cover all 81 template slides, split the content into the 6 separate specs on next major revision. This gets us closer to the template's deep-work promise (each DRI can go deep in their own spec without blocking others).
