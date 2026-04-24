@@ -56,6 +56,23 @@ Every Sunspoke object must pass this test: *"Would a person who wouldn't usually
 
 That is the design brief for every material, finish, packaging, weight, sound, and moment of interaction.
 
+### The target: Oura Ring / Whoop level of execution
+**Locked standard (April 2026):** Sunspoke's execution bar is Oura Ring and Whoop. That means:
+- Hardware that feels like a premium object on first touch (not a tech gadget)
+- Packaging and unboxing that becomes part of the product story — not an afterthought
+- Software that surprises users with what it knows about them from day one
+- A cohort of users who become unprompted evangelists and investors
+- Press coverage that compares us to Oura/Whoop, not Humane or Friend
+
+The explicit ambition: **build a product so good that every person who sees it wants to invest in it or buy one.** The first 20 founders are the first test of this. Their reactions will tell us whether we're at the bar or need another iteration.
+
+### What doesn't make the Oura/Whoop cut
+- Any Plaud branding visible anywhere (users or press)
+- Any packaging that feels generic
+- Any Slack message that feels like a typical SaaS notification
+- Any archetype card that looks like a personality quiz result
+- Any coaching moment that could have been written by a generic AI tool
+
 ---
 
 ## 1. The Three-Product Family
@@ -532,7 +549,14 @@ Two viable pricing paths for the 20 founders. Both valid; founder confirms one w
 **Weaknesses:** Day 30 "keep or return" feels slightly transactional, some churn, more operational overhead.
 
 ### Decision framework
-Path A wins on pure evangelism and relationship quality. Path B wins on capital efficiency and hardware reuse. Founder chooses based on capital position and appetite for revenue risk.
+Path A wins on pure evangelism and relationship quality. Path B wins on capital efficiency and hardware reuse.
+
+### Locked decision (April 2026): UX-gated pricing path
+The pricing path will be determined by the **Phase 1 UX quality**:
+- If the coaching UX is *clearly uncanny* by end of Jasmine's month of testing → **Path B (Try-and-Keep)**. The product is good enough to ask founders to pay to retain it.
+- If the coaching UX is *still rough or inconsistent* by end of Phase 1 → **Path A (Pure Gift)**. Accept $0 v0 revenue in exchange for maximum generosity and relationship quality.
+
+This means we don't commit to one path until Week 4-5. Outreach emails are written with two branches; we pick the branch when Jasmine can answer honestly whether the coaching has earned the ask.
 
 ---
 
@@ -582,19 +606,31 @@ Wayeez's jeweler and Wayeez's designer both sign NDAs prohibiting mention of Pla
 ### The vision
 The Sunspoke Object (and later Wear, Clip) embed a quiet LED that reflects the user's state in color. Subtle. Almost imperceptible unless you look for it. When you notice it, it's a mirror.
 
-### Two modes
+### The core principle: user-configurable
+**The user decides what the LED does.** Sunspoke ships LED behavior as a settings option, not a fixed feature. Defaults are off; users opt in to whatever configuration feels useful to them.
 
-**Mode A — Reflection (passive, ambient)**
+### Possible LED modes (user selects one, combination, or none)
+
+**Reflection mode — passive, ambient**
 The device detects emotional signals in the wearer's voice (pace, pitch variance, tonality, silence patterns). When a state is detected, the LED glows a color:
 - **Warm gold** — calm, grounded, present
 - **Cool blue** — reflective, contemplative
 - **Dim red** — agitated, stressed (subtle)
 - **Green pulse** — aligned with current goal
 
-Colors are chosen so that even if someone else notices, the meaning isn't obvious.
+Colors chosen so that even if someone else notices, the meaning isn't obvious.
 
-**Mode B — Goal Signal (active, rare)**
+**Goal Signal mode — active, rare**
 When a goal-relevant pattern is detected (interrupted someone, hedged, dodged a hard conversation), the LED pulses once briefly in the goal color. A tap on the shoulder, not a lecture.
+
+**Custom color-to-behavior mapping**
+User can map any detected signal to any color in their personal palette. Example: a user might prefer gold for "speaking more than usual today" or blue for "haven't spoken in 2 hours — maybe time to reach out." Freedom to configure.
+
+**No LED mode (default)**
+User can disable entirely. Object is still beautiful without it. Important that the hardware is never "incomplete without the feature."
+
+### Why user-configurable
+Locking a single interpretation (mood ring vs. goal nudge) risks the wrong fit for half the users. Making it a settings surface means each user builds the coaching experience that actually serves them. Also de-risks launch — we don't need one unified "correct" behavior to ship.
 
 ### Why it matters
 - Makes the invisible visible — turns speech patterns into quiet awareness
@@ -645,9 +681,13 @@ Include RGB LED driver capability on the custom PCB. Firmware ability to control
 - **Path A (Gift):** $0
 - **Path B (Try and Keep):** $3,500-7,000 from Day 30 conversions
 
-### Fundraising
-- Friends-and-family round off Founder's Edition traction: $200-400K at $15-20M SAFE cap
-- Close by Month 4-5 of v0 engagement
+### Fundraising — DEFERRED through v0
+**Locked decision (April 2026):** Do not raise during v0. Build as far as possible with founder capital + Aither profit distribution to maintain maximum leverage and ownership.
+
+- **v0 funded by:** founder + Aither profit distribution (~$115-180K)
+- **Friends-and-family round:** deferred until Phase 5 or Phase 6 — raise when we need capital for Wear/Clip expansion or custom hardware, not before
+- **Seed round:** raised when v0 + Phase 5 data demonstrably justify Phase 6 custom hardware + public launch (~Month 9-12)
+- **Rationale:** Every month we build before raising = better cap table, better terms, higher conviction from investors. Founder's capital is the cheapest capital we'll ever have.
 
 ### v1 budget (2027)
 - Custom hardware development: $300-500K
@@ -770,34 +810,31 @@ Include RGB LED driver capability on the custom PCB. Firmware ability to control
 
 ---
 
-## 18. Open Decisions
+## 18. Decisions — Locked (April 2026)
 
-Decisions the founder needs to make:
+Previously-open items now resolved:
 
-1. **Pricing path for the 20** — Path A (Gift) or Path B (Try and Keep)?
-   Current default: Path B.
+1. **Pricing path for the 20 — UX-gated.** Decision deferred to Week 4-5 of Phase 1. If the coaching feels uncanny → Path B (Try-and-Keep at $499). If it needs more work → Path A (Pure Gift). Outreach emails are written with two branches; we commit when Jasmine can honestly answer the quality question. See §11.
 
-2. **Public launch price architecture across three SKUs:**
-   - Object: $699-799
-   - Wear: $499-599
-   - Clip: $349-399
-   Confirm or reassign.
+2. **Public launch pricing across three SKUs** (Object $699-799, Wear $499-599, Clip $349-399) — confirmed as directional. Final pricing locked at public launch based on production costs + market research.
 
-3. **Founder's origin story — one paragraph.**
-   The personal moment that made you want to build this. Opens the manifesto.
+3. **Founder's origin story — captured.** See `founder-statement.md` for the drafted manifesto derived from the founder's own words: *"I want to be a better leader, better communicator. The day-to-day grind holds me back. I know my strengths; my gaps are unknown. A coach can't work with me in real time."*
 
-4. **Raising or just selling in v0?**
-   If raising: $200-400K friends-and-family at $15-20M SAFE cap.
-   If not: *"Not yet — but you'll be the first call when we do."*
+4. **Fundraising — deferred through v0.** Build as long as possible on founder capital + Aither profit. Raise only when launch demands it. Friends-and-family round re-enters consideration at Phase 5 or Phase 6. See §14.
 
-5. **Emotional LED behavior interpretation** — Reflection + Goal Signal hybrid?
-   Current default: yes, both modes, opt-in.
+5. **Emotional LED — user-configurable in settings.** Not a fixed feature. Each user decides what the LED does for them (or turns it off entirely). See §13.
 
-6. **"Million-dollar product" reference anchors** — Aesop / Le Gramme / Nomos / Hermès / Muji / Teenage Engineering?
-   Add or replace.
+6. **Million-dollar product reference anchors — Oura Ring and Whoop level of execution.** See §0. Surprise people. Make every viewer want to invest or buy.
 
-7. **Does the consumer product keep the Sunspoke name at public launch, or rename?**
-   Current default: keep. Revisit at v1.
+7. **Product name at public launch — Sunspoke.** Keep through v1. Revisit at v2 if learnings suggest a different consumer brand.
+
+### Still open (require founder input later)
+
+8. **Founder statement final voice** — draft lives in `founder-statement.md`. Founder edits it to match her exact voice before it goes on the website.
+
+9. **Archetype names and count** — 10-12 archetypes to be designed by Wayeez + copywriter. Drafted list in §4 of historical PRD; to be finalized during Phase 2 flow design.
+
+10. **The 20 founders — final list** — who exactly are these 20 people? Jasmine curates list with personal notes per recipient before outreach launches.
 
 ---
 
