@@ -1,29 +1,33 @@
-# Sunspoke — Specifications & Roadmap
+# Sunspoke — Final Specifications & Roadmap
 
-Private working documents for Sunspoke (consumer venture) and Sunspell (venture lab).
+Working documents for Sunspoke (consumer venture) and Sunspell (parent venture lab).
 
-## Documents
+## The canonical docs
 
-- **[`sun-os.md`](./sun-os.md)** — Umbrella doc for the Sunspell venture lab. Covers all "Sun-" products (Sunpull, Sundial, Sunspoke, Sunrun, Sunreach, Sunkeep, Sunbill, Sunhire), the Aither ↔ Sunspell loop, portfolio strategy, priority matrix, capital, team.
-- **[`sunspoke.md`](./sunspoke.md)** — Consolidated Sunspoke product doc. Mission, three-SKU product family (Object, Wear, Clip), phased roadmap (sculpture-first), hardware and tech specs, UI/UX, brand, packaging, cohort strategy, pricing paths, emotional LED vision, costs, legal, team.
-- **[`wayeez-brief.md`](./wayeez-brief.md)** — Specific brief for Wayeez (Design & Sourcing Lead). Her three-phase scope: prototype sourcing, final Object design, packaging, UX flow design, and continuous iteration.
-- **[`sunspoke-master-spec.md`](./sunspoke-master-spec.md)** — Historical execution spec, now superseded by `sunspoke.md`. Kept for reference.
-- **[`sunspoke-prd.md`](./sunspoke-prd.md)** — Historical PRD, now consolidated into `sunspoke.md`. Kept for reference.
-- **[`index.html`](./index.html)** — Browsable web viewer (experimental)
+- **[`sun-os.md`](./sun-os.md)** — Sunspell venture lab umbrella. Portfolio map (Sunpull, Sundial, Sunspoke, Sunrun, Sunreach, Sunkeep, Sunbill, Sunhire + consumer ventures Sapour, Airon, Sool, Sumani). Aither ↔ Sunspell loop. Priority matrix. Capital. Team.
+- **[`sunspoke.md`](./sunspoke.md)** — The final comprehensive Sunspoke doc. Mission, three-SKU product family (Object, Wear, Clip), phased roadmap (sculpture-first), hardware and tech specs, UI/UX, brand, packaging, cohort strategy, pricing paths, emotional LED vision, costs, legal, team, website launch tasks, locked decisions.
+- **[`wayeez-brief.md`](./wayeez-brief.md)** — Focused brief for Wayeez (design intern). Three-phase scope: vendor research, flow mockup drafts, packaging coordination, continuous iteration.
+- **[`founder-statement.md`](./founder-statement.md)** — Drafted manifesto. Awaiting founder's edit to lock the final voice. Finalization tracked as a website launch task in `sunspoke.md` §17.5.
 
-## Read order for someone new
+## Read order
 
-1. **New to the whole venture?** Start with `sun-os.md` → then `sunspoke.md`
-2. **Only working on Sunspoke?** Start with `sunspoke.md`
-3. **Wayeez?** Start with `wayeez-brief.md` → then read `sunspoke.md` §1, §2, §7, §8, §9
-4. **Michael?** Start with `sunspoke.md` §6 → then read §1, §2, §7
+1. **New to the whole thing?** `sun-os.md` → then `sunspoke.md`
+2. **Working only on Sunspoke?** `sunspoke.md`
+3. **Wayeez (design intern)?** `wayeez-brief.md` → then `sunspoke.md` §1, §2, §4, §7, §8, §9
+4. **Michael (engineering)?** `sunspoke.md` §6 first, then §1, §2, §7
+5. **Aither (brand and senior design)?** `sunspoke.md` §4, §7, §8, §9, §17.5 (website launch tasks)
 
 ## How to comment
 
-- Inline per-doc comments: scroll to the bottom of any page in the browsable viewer
-- Threaded discussion: use the [Discussions tab](../../discussions) of this repo
-- Direct edits: submit a pull request
+- **Inline comments** on specific sections — scroll to the bottom of any published page (Giscus widget, GitHub sign-in required to post)
+- **Threaded discussion** — [the Discussions tab](../../discussions) of this repo
+- **Direct edits** — submit a pull request against the relevant doc
+
+## Live URLs
+
+- Browsable viewer: https://jasmine-esk.github.io/sunspoke-spec/
+- Repo: https://github.com/jasmine-esk/sunspoke-spec
 
 ## Updates
 
-Docs are living. Expect regular updates as we learn. Changes tracked in git commit history.
+These docs are living. They change as we learn. Git history preserves every change. Commits ride continuously.

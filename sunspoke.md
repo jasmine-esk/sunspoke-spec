@@ -161,36 +161,38 @@ Hardware changes across products — software does not. This is the moat and the
 ### Phase 1 — Jasmine's Month (Weeks 1-4) · Proof of concept
 **Goal:** validate that the coaching software is uncanny on a single sculpture prototype, before committing to a designer or mass hardware.
 
+**Hardware status (already ordered, April 2026):** 1 Plaud NotePin + several Chinese voice-recorder knockoffs. Michael evaluates all in Week 1 and picks the best base hardware for the final rework.
+
 **Sequence:**
-1. **Buy 1 Plaud NotePin** (~$169)
-2. **Wayeez sources a jeweler/fabricator** to rework 1 unit into an initial sculptural form (simpler than final — just enough to be an acceptable desk object for Jasmine's testing). ~2 weeks, $200-500 for this rough v1.
+1. **Michael evaluates ordered hardware** (Plaud + knockoffs), picks base device for Phase 1 rework and documents decision
+2. **Wayeez shortlists fabricators** to rework 1 unit into an initial sculptural form (simpler than final — just enough to be an acceptable desk object for Jasmine's testing). Jasmine picks from the shortlist. ~2 weeks, $200-500 for this rough v1.
 3. **Michael builds the full coaching software stack** on this one unit (see §6 tech spec)
-4. **Jasmine wears / lives with / uses it for 1 month** — daily recaps, weekly Reads, archetype reveal
-5. Goal: after 4 weeks, answer *"does the coaching feel uncanny?"* honestly.
-   - If yes → greenlight Phase 2
-   - If no → iterate on coaching quality another 2-4 weeks before committing to designer work
+4. **Jasmine lives with the prototype for ~4 weeks** — daily recaps, weekly Reads, archetype reveal
+5. Goal: at the end of the month, answer *"does the coaching feel uncanny?"* honestly.
+   - If yes → greenlight Phase 2 + Path B pricing
+   - If no → iterate on coaching quality another 2-4 weeks, or commit to Path A pricing
 
 **Ownership:**
-- Jasmine: primary user, feedback loop
-- Michael: full software build
-- Wayeez: sources prototype jeweler, handles Plaud rework
+- Jasmine: primary user, feedback loop, final vendor selection
+- Michael: hardware evaluation, full software build, tech spec updates
+- Wayeez (design intern): vendor research and shortlisting, moodboards, coordination
 - Aither: brand system and initial website work in parallel
 
-### Phase 2 — Final Object Design (Weeks 5-10) · Wayeez leads
+### Phase 2 — Final Object Design (Weeks 5-10) · Aither-led with Jasmine owning product direction
 **Goal:** design and build the **final sculptural object** — the one that actually goes to 20 founders.
 
 **Sequence:**
-1. **Wayeez finds the industrial designer** for the final Object form. This is not the Phase 1 jeweler — this is a proper ID person capable of creating a real sculpture.
-2. **Collaborate on sculptural form** — shape, materials, finish options (gold, silver, bronze, ceramic), weight, proportion
-3. **Design the unboxing / packaging** — box, internal tray, signature, letter, cord/chain options for future Wear use
+1. **Wayeez shortlists** industrial designers for the final Object form. **Jasmine + Aither select** from the shortlist. This is not the Phase 1 fabricator — this is a proper ID person capable of creating a real sculpture.
+2. **Collaborate on sculptural form** — shape, materials, finish options (gold, silver, bronze, ceramic), weight, proportion. Aither drives creative direction; Wayeez coordinates.
+3. **Design the unboxing / packaging** — Aither art-directs, Wayeez sources vendors and manages production. Box, internal tray, signature, letter, cord/chain options for future Wear use.
 4. **Produce 20 final Founder's Edition Objects** — numbered 01-20, each hand-finished in one of three finishes selected by the founder
-5. **Wayeez also designs the flows** in parallel (see §7) — onboarding conversation, daily recap layout, weekly Read format, archetype card visual. Michael implements.
+5. **Wayeez drafts the flows in Figma** (see §7) — onboarding conversation, daily recap layout, weekly Read format, archetype card visual. **Aither reviews and refines** before Michael implements.
 
 **Ownership:**
-- Wayeez: industrial designer sourcing, final Object design direction, packaging/box design, UX flow design, ongoing iteration (this is her primary scope — see `wayeez-brief.md`)
+- Jasmine: product direction, vendor selection, final creative approvals, commissions the designer
+- Aither: brand direction, final flow design, packaging art direction, renders
+- Wayeez (intern): vendor research & shortlisting, first-draft flow mockups, moodboards, production coordination, packaging sourcing
 - Michael: tech spec updates based on final hardware, multi-user onboarding, flow implementation
-- Aither: brand assets for final launch (website, renders, IG if we open one)
-- Jasmine: founder statement, outreach copy, commission the designer
 
 ### Phase 3 — Founder Cohort (Weeks 10-14) · Ship to 20
 **Goal:** 20 founders receive the final Object, use it for 30 days, publish feedback.
@@ -205,7 +207,7 @@ Hardware changes across products — software does not. This is the moat and the
 **Ownership:**
 - Jasmine: outreach, weekly calls, LinkedIn post coordination
 - Michael: pipeline health per user, multi-tenant hardening
-- Wayeez: continuing UX improvements based on founder feedback (Month 2 of her engagement)
+- Wayeez: iterates UX flow drafts based on founder feedback (Month 2 of his engagement); Aither approves
 
 ### Phase 4 — Feedback & Iteration (Months 3-4)
 **Goal:** Process learnings from 20 founders, improve coaching, plan additions of Wear and Clip.
@@ -401,7 +403,7 @@ All coaching lives in Slack. No iOS app for v0. This is intentional — Slack is
 5. Set evening delivery time
 
 ### Flow design ownership
-**Wayeez designs all Slack conversation flows, visual artifacts, and UX improvements.** Michael implements.
+**Wayeez drafts all Slack conversation flows in Figma. Aither reviews and refines before handoff to Michael for implementation.** Iteration loop continues through Month 2-3 of cohort usage.
 
 This includes:
 - Onboarding conversation copy and cadence
@@ -409,7 +411,7 @@ This includes:
 - Weekly Read format + archetype card visual design
 - Slash commands (`/sunspoke pause`, `/sunspoke goal`, `/sunspoke note`)
 - Tone of voice across all bot interactions
-- Iteration based on founder feedback (Month 2 of Wayeez's engagement)
+- Iteration based on founder feedback (Month 2-3 of Wayeez's engagement)
 
 ### v1 native app (2027)
 When custom hardware ships, port the Slack experience to iOS + Android with richer visual design. Same core flows, native visual execution.
@@ -477,7 +479,7 @@ The unboxing is part of the product. Budget $100-200 per unit.
 6. Hidden drawer beneath tray: magnetic charging puck (unbranded — see §12)
 
 ### Sourcing path
-Wayeez owns packaging sourcing (see `wayeez-brief.md`):
+Wayeez researches and sources packaging vendors; Aither art-directs the final aesthetic (see `wayeez-brief.md`):
 - **Recommended:** Etsy or local artisan woodworker + bespoke print shop for letter stationery (Jukebox Print, Moo Luxe, local letterpress)
 - **Alternative:** customize existing luxury jewelry box supplier
 - Budget: $100-200/unit × 20 = $2,000-4,000
@@ -660,21 +662,22 @@ Include RGB LED driver capability on the custom PCB. Firmware ability to control
 
 | Category | Cost | Notes |
 |---|---|---|
-| Plaud hardware (20 units + 5 spare) | $4,200 | $169 × 25 |
-| Phase 1 jeweler prototype (1 unit) | $200-500 | Quick rework for Jasmine's test |
-| Industrial designer — final Object | $20-40K | Design + prototyping |
+| Plaud + Chinese knockoffs (already ordered) | ~$500-1,500 | Sunk cost, Michael evaluates best base |
+| Additional hardware for 20-unit cohort | $3,500-5,000 | Reorder once base device is selected |
+| Phase 1 fabricator prototype (1 unit) | $200-500 | Quick rework for Jasmine's test |
+| Industrial designer — final Object | $20-40K | External hire, Aither + Jasmine select |
 | Production for 20 final Objects | $6,000-12,000 | $300-600/unit × 20 |
 | Packaging (wooden boxes, letters, etc.) | $2,000-4,000 | $100-200/unit × 20 |
 | Aither brand + website + renders | $30-50K | Opportunity cost or contractor |
 | Michael engineering (v0 build) | $30-45K | 6-8 weeks focused |
-| Wayeez engagement (2-3 months) | $15-30K | Design direction + sourcing + ongoing UX |
+| Wayeez — design intern stipend (~3 months) | $9-15K | $3-5K/mo × 3 months |
 | Privacy lawyer | $15-25K | Voice-ID architecture + ToS |
 | Provisional patent | $15-25K | Software claims |
 | Incorporation (Delaware C-Corp) | $2-5K | Clerky or Stripe Atlas |
 | Founder outreach + comms | $2-3K | |
 | Tools (Stripe, Webflow, Claude API) | $1-2K | First 3 months |
 | Contingency | $10K | |
-| **v0 total** | **$150-250K** | Broader range reflects new design-led scope |
+| **v0 total** | **$145-240K** | |
 
 ### v0 revenue offset
 
@@ -751,13 +754,14 @@ Include RGB LED driver capability on the custom PCB. Firmware ability to control
 - Interface for future custom hardware (Phase 6)
 - Budget: $15-20K/mo for 2-3 months Phase 1-3, then ongoing
 
-### Wayeez — Design & Sourcing Lead
-- Sources Phase 1 jeweler for Jasmine's initial prototype
-- Sources final industrial designer (Phase 2)
-- Designs all UX/UI flows (onboarding, daily, weekly, archetype visuals)
-- Packaging / box design
-- Continuous improvement over first 2 months
-- Budget: $15K/mo × 2-3 months = $30-45K
+### Wayeez — Design Intern (Research, Drafts, Coordination)
+- Researches and shortlists Phase 1 fabricators, Phase 2 industrial designers, and packaging vendors (Jasmine + Aither make final selections)
+- Drafts all UX/UI flow mockups in Figma (Aither reviews and refines before handoff to Michael)
+- Coordinates packaging sourcing (Aither art-directs)
+- Manages vendor logistics, NDAs, QC tracking, shipping
+- Iterates flow drafts over first 2-3 months based on founder feedback
+- Attends feedback calls, takes notes, surfaces themes for Jasmine
+- Budget: ~$3-5K/mo × 3 months = $9-15K (intern stipend)
 - **Full brief:** `wayeez-brief.md`
 
 ### Aither — Brand + Design
@@ -810,6 +814,39 @@ Include RGB LED driver capability on the custom PCB. Firmware ability to control
 
 ---
 
+## 17.5. Website Launch Tasks
+
+The website launch is its own workstream. Below are the specific deliverables that must be completed before the site goes live to the 20 founders (targeted for Phase 2, Weeks 7-10).
+
+### Owned by Jasmine
+- [ ] **Finalize founder statement** for website. Draft lives at `founder-statement.md`. Read aloud, edit to match her exact voice, sign off on final version. *Not urgent right now per founder preference — do during Phase 2 when website design is being built.*
+- [ ] Curate the final list of 20 founders with personal notes per recipient
+- [ ] Approve brand system + website mockups from Aither
+- [ ] Sign the 20 letters (physical, by hand)
+
+### Owned by Aither
+- [ ] Brand system: logo, typography, color palette, visual language
+- [ ] Website design: single long-scroll editorial page (see §6)
+- [ ] Website build: Framer or Webflow, password-gated
+- [ ] Renders of Founder's Edition Object in all three finishes (silver, gold, bronze)
+- [ ] Packaging art direction and photography for the site
+- [ ] Final founder statement styling (typography, layout, signature treatment)
+
+### Owned by Wayeez (support)
+- [ ] Moodboards for website aesthetic (feed Aither)
+- [ ] Proof-check every page for Plaud references before launch
+- [ ] Coordinate deposit flow testing (if Path B is chosen)
+
+### Owned by Michael
+- [ ] Stripe integration for deposit flow (if Path B) or simple RSVP collector (if Path A)
+- [ ] Post-deposit confirmation email + assigned Founder's Edition number
+- [ ] Analytics setup (Plausible or Fathom)
+
+### Launch gate
+Website cannot go live until all of the above are complete AND the Phase 1 pricing path decision has been made (Week 4-5). Target website launch: Week 7-8.
+
+---
+
 ## 18. Decisions — Locked (April 2026)
 
 Previously-open items now resolved:
@@ -832,7 +869,7 @@ Previously-open items now resolved:
 
 8. **Founder statement final voice** — draft lives in `founder-statement.md`. Founder edits it to match her exact voice before it goes on the website.
 
-9. **Archetype names and count** — 10-12 archetypes to be designed by Wayeez + copywriter. Drafted list in §4 of historical PRD; to be finalized during Phase 2 flow design.
+9. **Archetype names and count** — 10-12 archetypes to be drafted by Wayeez and refined by Aither's copywriter + illustrator during Phase 2 flow design. Starter list: The Diplomat, The Interrupter, The Softener, The Over-Explainer, The Anchor, The Mirror, The Deflector, The Architect, The Excavator, The Broadcaster, The Bridge, The Hinge.
 
 10. **The 20 founders — final list** — who exactly are these 20 people? Jasmine curates list with personal notes per recipient before outreach launches.
 
@@ -844,14 +881,14 @@ Previously-open items now resolved:
 |---|---|---|---|
 | Phase 1 coaching quality is mediocre | Medium | Critical | Explicit go/no-go gate at Week 4 before committing designer fees |
 | Plaud API inaccessible | Medium | High | Five-path fallback ladder in §6.3 |
-| Phase 1 jeweler's prototype looks cheap | Medium | Medium | Budget for 2-3 rework attempts; Wayeez has final approval |
+| Phase 1 fabricator's prototype looks cheap | Medium | Medium | Budget for 2-3 rework attempts; Jasmine + Aither approve before shipping to founders |
 | Final industrial designer costs run over | High | Medium | Three quotes, contingency budget, phased milestones |
 | 20 founders don't post on LinkedIn | Medium | Medium | Written ambassador contract with posting deadline; monthly follow-ups |
 | Two-party consent legal challenge | Low | High | Privacy lawyer review pre-ship |
 | Plaud identifies rework, sends C&D | Low | Medium | Closed 20-user beta, NDAs, "validated third-party" ToS language |
 | Custom hardware dev (Phase 6) overruns | High | High | Three engineering quotes, contingency, phased milestones |
 | OpenAI + Ive launch crushes v0 launch window | Low | Medium | Ship Founder's Edition before their launch; own coaching vertical they won't enter |
-| Wayeez bandwidth limited across all her responsibilities | Medium | High | Clear scope in `wayeez-brief.md`; weekly check-ins; don't add scope without removing scope |
+| Wayeez's intern scope too broad to execute well | Medium | Medium | Clear scope in `wayeez-brief.md`; Aither actively reviews drafts; Jasmine sets realistic expectations |
 
 ---
 
@@ -867,14 +904,15 @@ Don't re-litigate:
 - **Cohort strategy:** Closed 20-founder invite-only
 - **Positioning claim for v0:** "Only coaches you on what you said" (not "only hears you" — reserved for v1 with on-device voice-ID)
 - **Brand direction:** jewelry/object aesthetic, not gadget
-- **Design lead:** Wayeez (sourcing + flows + iteration)
+- **Design lead:** Aither (creative direction) · **Design intern:** Wayeez (research, drafts, coordination)
 - **Engineering lead:** Michael (full software stack, continuously updated tech spec)
 - **Brand + website lead:** Aither
 
 ---
 
 **Owner:** Jasmine
-**Design lead:** Wayeez
+**Design lead:** Aither (creative direction)
+**Design intern:** Wayeez (he/him — research, drafts, coordination)
 **Engineering lead:** Michael
 **Brand:** Aither
 **Review cadence:** Weekly during Phase 1-3, monthly thereafter

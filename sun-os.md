@@ -257,8 +257,8 @@ They also all create *new forms of identity*:
 **Scope:** all operational tools (Sunpull, Sundial, Sunrun, etc.) + Sunspoke consumer software.
 **Constraint:** not a hardware engineer. External hardware partners for Sunspoke v1.
 
-### Wayeez — Design & Sourcing Lead
-**Scope:** Sunspoke product design direction (industrial designer sourcing, object/packaging/flow design), ongoing UX improvements during founder cohort. See `wayeez-brief.md`.
+### Wayeez — Design Intern (Sunspoke)
+**Scope:** research and coordination on Sunspoke — shortlisting fabricators and industrial designers (Jasmine + Aither choose), drafting flow mockups (Aither refines), managing vendor logistics, iterating UX during founder cohort. Intern role supporting the senior design work done by Aither. See `wayeez-brief.md`.
 
 ### Aither team
 **Scope:** brand system, website, renders, packaging creative for Sunspoke. Opportunity cost accounted inside Sunspell budget.
